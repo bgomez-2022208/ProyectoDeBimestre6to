@@ -25,5 +25,4 @@ const FacturaSchema = Schema({
 });
 
 
-
 module.exports = model('Factura', FacturaSchema);
