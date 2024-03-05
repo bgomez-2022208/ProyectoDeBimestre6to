@@ -10,10 +10,11 @@ import {
 import {
     existenteEmail,
     existeAdminById,
+    esRoleValido
 } from "../helpers/db-validators.js";
 
 import { validarCampos } from "../middlewares/validar-campos.js";
-
+import { validarJWT } from "../middlewares/validar-jwt.js";
 
 const router = Router();
 
@@ -36,10 +37,21 @@ router.post(
           }),
         check("correo", "Este no es un correo válido").isEmail(),
         check("correo").custom(existenteEmail),
-        //check("role").custom(esRoleValido),
         validarCampos,
     ],
     createAdmin
     );
+
+    router.put(
+        "/:id",
+        [
+          validarJWT,
+          check("nombre", "name cannot be empty").not().isEmpty(),
+          check("password", "category cannot be empty").not().isEmpty(),
+          validarCampos,
+        ],
+        adminPut
+      );
+
 
     export default router;

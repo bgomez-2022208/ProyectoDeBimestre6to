@@ -34,15 +34,32 @@ export const createAdmin = async (req, res) => {
 
 //Update
 
-export const adminPut = async (req, res = response) => {
-    const { id } = req.params;
-    const {_id, ...resto} = req.body;
-    await Admin.findByIdAndUpdate(id, resto);
+export const adminPut = async (req, res) => {
+    const adminId = req.params.id;
+    const {nombre,password} = req.body;
+    try {
+        const admin = await Admin.findById(adminId);
+
+        if (!admin){
+            return res.status(404).json({ msg: "admin not found"});
+        }
+        admin.nombre = nombre;
+        admin.password = password;
+
+        await admin.save();
+        res.status(200).json({ msg: "admin updated successfully", admin });
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ msg: "Internal Server Error" });
+    }
+  };
+/*
+const { id } = req.params;
+await Admin.findByIdAndUpdate(id, resto);
 
     const admin = await Admin.findOne({_id: id});
 
     res.status(200).json({
         msg: 'Administrador actualizado',
         admin,
-    });
-}
+    });*/ 

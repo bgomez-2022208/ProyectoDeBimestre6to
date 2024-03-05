@@ -6,7 +6,7 @@ import helmet from 'helmet';
 import morgan from 'morgan';
 import { dbConnection } from './mongo.js';
 import adminsRoutes from '../src/admin/admin.routes.js';
-//import customerRoutes from '../src/customer/customer.routes.js';
+import customerRoutes from '../src/customer/customer.routes.js';
 import authRoutes from '../src/auth/auth.routes.js';
 
 class Server {
@@ -14,7 +14,7 @@ class Server {
         this.app = express();
         this.port = process.env.PORT;
         this.adminPath = '/api/admin';
-        //this.clientPath = '/customer/v1/users';
+        this.clientPath = '/customer/v1/users';
         this.authPath = '/api/auth';
 
         this.middlewares(); 
@@ -36,7 +36,7 @@ class Server {
 
     routes() {
         this.app.use(this.adminPath,adminsRoutes);
-        //this.app.use(this.clientPath, customerRoutes);
+        this.app.use(this.clientPath, customerRoutes);
         this.app.use(this.authPath,authRoutes);
         
     }
