@@ -50,7 +50,7 @@ export const CustomerPut = async (req, res) => {
         customer.informacion = informacion;
 
         await customer.save();
-        res.status(200).json({ msg: "customer updated successfully", admin });
+        res.status(200).json({ msg: "customer updated successfully", customer });
     } catch (error) {
       console.error(error);
       res.status(500).json({ msg: "Internal Server Error" });
@@ -64,4 +64,13 @@ export const CustomerPut = async (req, res) => {
     res.status(200).json({
         customer,
     });
+}
+
+
+export const deleteCustomer = async (req, res) => {
+    const { id } = req.params;
+    const customer = await Customer.findByIdAndUpdate(id, { estado: false });
+    const authenticatedUser = req.customer;
+
+    res.status(200).json({ msg: 'Usuario desactivado', customer, authenticatedUser });
 }

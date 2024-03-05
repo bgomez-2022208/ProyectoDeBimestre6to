@@ -1,0 +1,72 @@
+{
+    "client": "Thunder Client",
+    "collectionName": "Customers",
+    "dateExported": "2024-03-05T23:02:56.877Z",
+    "version": "1.1",
+    "folders": [],
+    "requests": [
+        {
+            "_id": "d0d028df-9987-488e-af8b-a5f75d8d0872",
+            "colId": "4af0cca0-c2d6-486d-874d-dcc6e59b7fe5",
+            "containerId": "",
+            "name": "NewCustomer",
+            "url": "http://localhost:8080/customer/v1/users",
+            "method": "POST",
+            "sortNum": 10000,
+            "created": "2024-03-05T22:23:02.990Z",
+            "modified": "2024-03-05T22:44:21.357Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"nombre\":\"sds\",\n  \"correo\":\"gersonEmanuel@gmail.com\",\n  \"password\":\"1234567\",\n  \"preferencias\":\"leche\",\n  \"informacion\":\"dslasdlsa\"\n}",
+                "form": []
+            },
+            "reqType": "post",
+            "tests": []
+        },
+        {
+            "_id": "33cc6d86-4c90-4200-9511-a2b453012db8",
+            "colId": "4af0cca0-c2d6-486d-874d-dcc6e59b7fe5",
+            "containerId": "",
+            "name": "updateCustomer",
+            "url": "http://localhost:8080/customer/v1/users/65e7a046c4eabee6372c32d1",
+            "method": "PUT",
+            "sortNum": 20000,
+            "created": "2024-03-05T22:46:03.013Z",
+            "modified": "2024-03-05T22:47:46.291Z",
+            "headers": [
+                {
+                    "name": "x-token",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NWU3YTA0NmM0ZWFiZWU2MzcyYzMyZDEiLCJpYXQiOjE3MDk2Nzg2ODYsImV4cCI6MTcwOTY4MjI4Nn0.doiE0FVBo7NpqMm28DKxtOeDcZgu4VWk7nelR4_11XM"
+                }
+            ],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"nombre\":\"gerson\",\n  \"password\":\"1234567\",\n  \"preferencias\":\"papas\",\n  \"informacion\":\"lalalala\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "c8179e44-dae6-4e88-965b-dbeab1072c5c",
+            "colId": "4af0cca0-c2d6-486d-874d-dcc6e59b7fe5",
+            "containerId": "",
+            "name": "deleteCustomer",
+            "url": "http://localhost:8080/customer/v1/users/65e7a046c4eabee6372c32d1",
+            "method": "DELETE",
+            "sortNum": 30000,
+            "created": "2024-03-05T22:46:20.054Z",
+            "modified": "2024-03-05T23:01:21.284Z",
+            "headers": [
+                {
+                    "name": "x-token",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NWU3YTA0NmM0ZWFiZWU2MzcyYzMyZDEiLCJpYXQiOjE3MDk2Nzg2ODYsImV4cCI6MTcwOTY4MjI4Nn0.doiE0FVBo7NpqMm28DKxtOeDcZgu4VWk7nelR4_11XM"
+                }
+            ],
+            "params": [],
+            "tests": []
+        }
+    ]
+}

@@ -1,0 +1,63 @@
+{
+    "client": "Thunder Client",
+    "collectionName": "Admin",
+    "dateExported": "2024-03-05T23:02:35.501Z",
+    "version": "1.1",
+    "folders": [],
+    "requests": [
+        {
+            "_id": "10329fc8-65b2-40b4-9bb4-34fc63f19216",
+            "colId": "d341b6dd-dc39-4ad1-a9b9-d652a8515733",
+            "containerId": "",
+            "name": "create",
+            "url": "http://localhost:8080/customer/v1/users",
+            "method": "POST",
+            "sortNum": 10000,
+            "created": "2024-03-05T18:49:04.906Z",
+            "modified": "2024-03-05T22:23:48.974Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"nombre\":\"loll\",\n  \"password\":\"1234567\",\n  \"correo\":\"brandeti99@gmail.com\"\n}",
+                "form": []
+            },
+            "reqType": "post",
+            "tests": []
+        },
+        {
+            "_id": "28c28729-6538-43a9-9066-d14f555d1607",
+            "colId": "d341b6dd-dc39-4ad1-a9b9-d652a8515733",
+            "containerId": "",
+            "name": "updateAdmin",
+            "url": "http://localhost:8080/api/admin/65e7937bd8a83d37d60bc24f",
+            "method": "PUT",
+            "sortNum": 20000,
+            "created": "2024-03-05T19:48:47.452Z",
+            "modified": "2024-03-05T21:54:19.940Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"nombre\":\"sss\",\n  \"password\":\"1234567\"\n}",
+                "form": []
+            },
+            "reqType": "put",
+            "tests": []
+        },
+        {
+            "_id": "b733c314-5dd8-4112-a192-f0fcce2b09e0",
+            "colId": "d341b6dd-dc39-4ad1-a9b9-d652a8515733",
+            "containerId": "",
+            "name": "readAdmin",
+            "url": "http://localhost:8080/api/admin/65e776c77c1eb3fbdf72ffda",
+            "method": "GET",
+            "sortNum": 30000,
+            "created": "2024-03-05T19:49:09.032Z",
+            "modified": "2024-03-05T19:49:48.388Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        }
+    ]
+}

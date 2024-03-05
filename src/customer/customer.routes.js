@@ -4,7 +4,8 @@ import { check } from "express-validator";
 import {
     createCustomer,
     CustomerPut,
-    getCustomerById
+    getCustomerById,
+    deleteCustomer
 } from "./customer.controller.js";
 
 import {
@@ -13,7 +14,7 @@ import {
 } from "../helpers/db-validators.js";
 
 import { validarCampos } from "../middlewares/validar-campos.js";
-import { validarJWT } from "../middlewares/validar-jwt.js";
+import { validarJWTCustomer } from "../middlewares/validar-jwt.js";
 
 const router = Router();
 
@@ -44,7 +45,7 @@ router.post(
     router.put(
         "/:id",
         [
-          validarJWT,
+            validarJWTCustomer,
           check("nombre", "name cannot be empty").not().isEmpty(),
           check("password", "category cannot be empty").not().isEmpty(),
           validarCampos,
@@ -52,5 +53,16 @@ router.post(
         CustomerPut
       );
 
+      router.delete(
+        "/:id",
+        [
+        validarJWTCustomer,
+          //tieneRole(""),
+          check("id", "No es un ID válido").isMongoId(),
+          check("id").custom(existeCustomerById),
+          validarCampos,
+        ],
+        deleteCustomer
+      );
 
     export default router;
