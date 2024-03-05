@@ -2,7 +2,7 @@
 
 import {response, request } from "express";
 import bcryptjs from 'bcryptjs';
-import Admin from './admin';
+import Admin from './admin.js';
 
 
 // Metodo para obtener al administrador
