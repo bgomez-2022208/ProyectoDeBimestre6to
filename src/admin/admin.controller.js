@@ -5,7 +5,6 @@ import bcryptjs from 'bcryptjs';
 import Admin from './admin.js';
 
 
-// Metodo para obtener al administrador
 export const getAdminsById = async (req, res) => {
     const { id } = req.params;
     const admin = await Admin.findOne({ _id: id});

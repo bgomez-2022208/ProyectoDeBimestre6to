@@ -1,4 +1,5 @@
 import Admin from '../admin/admin.js'
+import Producto from '../product/product.js'
 import Customer from '../customer/customer.js'
 
 export const existenteEmail = async (correo = '') => {
@@ -26,5 +27,19 @@ export const existeCustomerById = async (id = '') => {
     const existeCustomer = await Customer.findById(id);
     if (!existeCustomer){
         throw new Error(`El ID: ${correo} No existe`);
+    }
+}
+
+export const existenteProduct = async (nombre = '') => {
+    const existenteProdu = await Producto.findOne({nombre});
+    if (existenteProdu){
+        throw new Error(`El Producto ${nombre} ya fue registrado`);
+    }
+}
+
+export const existeProducById = async (id = '') => {
+    const existenteProduc = await Producto.findById(id);
+    if (!existenteProduc){
+        throw new Error(`El ID: ${id} No existe`);
     }
 }
