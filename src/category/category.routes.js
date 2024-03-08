@@ -5,7 +5,8 @@ import {
     getCategoriaById,
     createCategoria,
     categoriaDelete,
-    CategoriPut
+    getCategory
+
     
 } from "./category.controller.js";
 
@@ -24,6 +25,7 @@ import { validarJWT } from "../middlewares/validar-jwt.js";
 
 const router = Router();
 
+router.get('/', getCategory);
 
 router.get(
     "/:id",
@@ -49,16 +51,16 @@ router.post(
 
 
 
-router.put(
+/*router.put(
     "/:id",
     [
     validarJWT,
     check("categoria","El categoria es obligatorio").not().isEmpty(),
-    check("categoria").custom(existenteProduct),
+    check("categoria").custom(existeCategoriaById),
     validarCampos,
     ],
     CategoriPut
-    );
+    );*/
 
 
 router.delete('/', [validarJWT], categoriaDelete);

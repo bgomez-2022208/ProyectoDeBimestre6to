@@ -71,4 +71,7 @@ router.put(
 
 router.delete('/:id', [validarJWT, validarCampos], Productdelete);
 
+
+
+
     export default router;

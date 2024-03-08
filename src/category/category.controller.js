@@ -60,3 +60,39 @@ export const categoriaDelete = async (req,res) => {
         category,pcategory
     });
 }
+
+
+export const getCategory = async (req, res) => {
+    const { limite, desde } = req.query;
+    const query = { estado: true };
+   
+
+
+
+    try {
+        const categoria = await Categoria.find(query)
+            .skip(Number(desde))
+            .limit(Number(limite));
+
+        const CategoriasWithProducNames = await Promise.all(categoria.map(async (cate) => {
+            const owner = await Producto.findById(cate.keeper);
+            return {
+                ...cate.toObject(),
+                keeper: owner ? owner.nombre : "Producto no encontrado",
+            };
+        }));
+
+        const total = await Categoria.countDocuments(query);
+
+        res.status(200).json({
+            total,
+            categoria: CategoriasWithProducNames,
+        });
+        
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ message: 'Error interno del servidor' });
+    }
+}
+
+
