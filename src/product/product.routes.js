@@ -13,6 +13,7 @@ import {
 import {
     existenteProduct,
     existeProducById,
+    NoexistenteCategoria
     
 } from "../helpers/db-validators.js";
 
@@ -45,6 +46,7 @@ router.post(
         check("empresa","La empresa es obligatoria").not().isEmpty(),
         check("descripcion","La descripcion es obligatoria").not().isEmpty(),
         check("categoria","La categoria es obligatoria").not().isEmpty(),
+        check("categoria").custom(NoexistenteCategoria),
         validarCampos,
     ],
     createProduct

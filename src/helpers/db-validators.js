@@ -1,6 +1,7 @@
 import Admin from '../admin/admin.js'
 import Producto from '../product/product.js'
 import Customer from '../customer/customer.js'
+import Categoria from '../category/category.js'
 
 export const existenteEmail = async (correo = '') => {
     const existeEmail = await Admin.findOne({correo});
@@ -39,6 +40,27 @@ export const existenteProduct = async (nombre = '') => {
 
 export const existeProducById = async (id = '') => {
     const existenteProduc = await Producto.findById(id);
+    if (!existenteProduc){
+        throw new Error(`El ID: ${id} No existe`);
+    }
+}
+
+export const existenteCategoria = async (categoria = '') => {
+    const existeEmail = await Categoria.findOne({categoria});
+    if (existeEmail){
+        throw new Error(`La categoria ${categoria} ya fue registrado`);
+    }
+}
+
+export const NoexistenteCategoria = async (categoria = '') => {
+    const existeEmail = await Categoria.findOne({categoria});
+    if (!existeEmail){
+        throw new Error(`La categoria ${categoria} no existe`);
+    }
+}
+
+export const existeCategoriaById = async (id = '') => {
+    const existenteProduc = await Categoria.findById(id);
     if (!existenteProduc){
         throw new Error(`El ID: ${id} No existe`);
     }
