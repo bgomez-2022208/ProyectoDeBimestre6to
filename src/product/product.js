@@ -1,45 +1,45 @@
-import mongoose from "mongoose";;
+import { Schema, model } from "mongoose";
 
-const productoSchema = mongoose.Schema({
+const productoSchema = Schema({
     nombre:{
         type: String,
-        required:["Nombre del producto"],
+        required: [true, "Nombre del producto es requerido"],
         unique: true,
-
     },
     precio:{
         type: Number,
-        require:["Precio del producto"],
+        required: [true, "Precio del producto es requerido"],
     },
     cantidad:{
-        type:Number,
-        require:["Cantidad de existencias"]
+        type: Number,
+        required: [true, "Cantidad de existencias es requerida"],
     },
     vendidos:{
-        type:Number,
+        type: Number,
+        default: 0,
     },
     empresa:{
-        type:String,
-        required:["Marca del produto"]
+        type: String,
+        required: [true, "Marca del producto es requerida"],
     },
     descripcion:{
-        type:String,
-        required:['Descripcion del producto']
+        type: String,
+        required: [true, "Descripción del producto es requerida"],
     },
     categoria:{
-        type:String,
-        required:["Categoria del producto"]
+        type: String,
+        required: [true, "Categoría del producto es requerida"],
     },
     estado:{
-        type:Boolean,
-        default:true
+        type: Boolean,
+        default: true,
     }
 });
 
 productoSchema.methods.toJSON = function(){
-    const{ __v, nombre, _id, ...producto} = this.toObject();
+    const{ __v, _id, ...producto} = this.toObject();
     producto.uid = _id;
     return producto;
 };
 
-export default mongoose.model('Producto', productoSchema);
+export default model('Producto', productoSchema);

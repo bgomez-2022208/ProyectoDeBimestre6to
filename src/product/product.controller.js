@@ -3,6 +3,7 @@
 import {response, request } from "express";
 import bcryptjs from 'bcryptjs';
 import Product from './product.js';
+import Categoria from '../category/category.js';
 
 
 export const getProducById = async (req, res) => {
@@ -58,4 +59,23 @@ export const ProductPut = async (req, res) => {
 
     await Product.findByIdAndUpdate(id, { estado: false });
     res.status(200).json({ msg: 'Producto eliminado exitosamente' });
+}
+
+
+
+
+export const getCategory = async(req, res = response) =>{
+    const { categoria } = req.query;
+    const c = await Categoria.findOne({categoria})
+    const p = await Product.find({categoria})
+
+    if(!c){
+        return res.status(400).json({
+            msg: "Esta categoria no existe"
+        });
+    }
+
+    res.status(200).json({
+        p
+    });
 }

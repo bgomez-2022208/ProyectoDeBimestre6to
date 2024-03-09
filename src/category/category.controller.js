@@ -27,68 +27,23 @@ export const createCategoria = async (req, res) => {
     });
 }
 
-export const categoriaDelete = async (req,res) => {
+
+
+export const categoriaDelete = async (req, res) => {
     console.log('categoryDelete');
-    const {categoria} = req.query;
-
-    const cat = await Categoria.findOne({categoria})
-    const p = await Producto.findOne({categoria})
-
-    if(!cat){
-        return res.status(400).json({
-            msg: "Categoria no existe, vuelva a ingresarla en el query"
-        });
-    }
-    if(!p){
-        cat.estado=false;
-        const category = await Categoria.findByIdAndUpdate(cat.id, cat);
-        return res.status(400).json({
-            categoria,
-            cat,
-            msg: "Categoria no esta registrada en productos, por lo que no se ve afectado"
-        });
-    }
-
-    cat.estado=false;
-    p.categoria='Categorias eliminadas';
-
-    const pcategory = await Producto.findByIdAndUpdate(p.id,p)
-    const category = await Categoria.findByIdAndUpdate(cat.id, cat);
-
-    res.status(200).json({
-        msg: "Categoria eliminada",
-        category,pcategory
-    });
-}
-
-
-export const getCategory = async (req, res) => {
-    const { limite, desde } = req.query;
-    const query = { estado: true };
-   
-
-
+    const { categoria } = req.query;
 
     try {
-        const categoria = await Categoria.find(query)
-            .skip(Number(desde))
-            .limit(Number(limite));
+        // Encontrar todos los productos con la categoría a eliminar
+        const productos = await Producto.updateMany({ categoria }, { categoria: 'Categorías eliminadas' });
 
-        const CategoriasWithProducNames = await Promise.all(categoria.map(async (cate) => {
-            const owner = await Producto.findById(cate.keeper);
-            return {
-                ...cate.toObject(),
-                keeper: owner ? owner.nombre : "Producto no encontrado",
-            };
-        }));
-
-        const total = await Categoria.countDocuments(query);
+        // Eliminar la categoría
+        const result = await Categoria.deleteOne({ categoria });
 
         res.status(200).json({
-            total,
-            categoria: CategoriasWithProducNames,
+            msg: "Categoría eliminada de los productos",
+            result
         });
-        
     } catch (error) {
         console.error(error);
         res.status(500).json({ message: 'Error interno del servidor' });
@@ -96,3 +51,48 @@ export const getCategory = async (req, res) => {
 }
 
 
+export const getCategory = async (req, res) => {
+    const { limite, desde } = req.query;
+    const query = { estado: true };
+
+    try {
+        // Obtener las categorías paginadas
+        const categorias = await Categoria.find(query)
+            .skip(Number(desde))
+            .limit(Number(limite));
+
+        // Obtener el total de categorías
+        const total = await Categoria.countDocuments(query);
+
+        // Para cada categoría, obtener los productos asociados
+        const categoriasConProductos = await Promise.all(categorias.map(async (categoria) => {
+            // Buscar el producto asociado a la categoría
+            const producto = await Producto.findOne(categoria.keeper);
+
+            // Verificar si se encontró el producto
+            if (!producto) {
+                return {
+                    ...categoria.toObject(),
+                    producto: "Producto no encontrado",
+                };
+            }
+
+            // Devolver la categoría con el producto asociado
+            return {
+                ...categoria.toObject(),
+                producto: producto.nombre,
+                // Agrega más campos del producto si lo necesitas
+            };
+        }));
+
+        // Responder con las categorías y sus productos asociados
+        res.status(200).json({
+            total,
+            categorias: categoriasConProductos,
+        });
+        
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ message: 'Error interno del servidor' });
+    }
+}

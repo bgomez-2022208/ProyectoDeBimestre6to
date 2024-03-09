@@ -5,7 +5,8 @@ import {
     getProducById,
     createProduct,
     ProductPut,
-    Productdelete
+    Productdelete,
+    getCategory
 } from "./product.controller.js";
 
 
@@ -22,6 +23,9 @@ import { validarJWT } from "../middlewares/validar-jwt.js";
 
 
 const router = Router();
+
+router.get('/', getCategory);
+
 
 router.get(
     "/:id",

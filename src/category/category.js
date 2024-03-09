@@ -3,11 +3,8 @@ import mongoose from 'mongoose';
 const CategoriaSchema = mongoose.Schema({
     categoria:{
         type: String,
-        required: [true, "The categoria is required"],
+        required: [true, "La categoría es requerida"],
         unique: true,
-    },
-    producto: {
-        type: String,
     },
     estado: {
         type: Boolean,
