@@ -4,7 +4,8 @@ import { check } from "express-validator";
 import {
     createAdmin,
     adminPut,
-    getAdminsById
+    getAdminsById,
+    deleteAdmin
 } from "./admin.controller.js";
 
 import {
@@ -43,7 +44,7 @@ router.post(
     );
 
     router.put(
-        "/:id",
+        "/:update",
         [
           validarJWT,
           check("nombre", "name cannot be empty").not().isEmpty(),
@@ -53,5 +54,8 @@ router.post(
         adminPut
       );
 
+    router.delete('/', [
+         validarJWT,
+        ], deleteAdmin);
 
     export default router;

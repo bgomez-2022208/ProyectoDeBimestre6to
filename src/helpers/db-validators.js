@@ -10,6 +10,13 @@ export const existenteEmail = async (correo = '') => {
     }
 }
 
+export const existenteEmailCustomer = async (correo = '') => {
+    const existeEmail = await Customer.findOne({correo});
+    if (existeEmail){
+        throw new Error(`El email ${correo} ya fue registrado`);
+    }
+}
+
 export const existeAdminById = async (id = '') => {
     const existeAdmin = await Admin.findById(id);
     if (!existeAdmin){
@@ -39,9 +46,10 @@ export const existenteProduct = async (nombre = '') => {
 }
 
 export const existeProducById = async (id = '') => {
-    const existenteProduc = await Producto.findById(id);
+    console.log(id);
+    const existenteProduc = await Producto.findById({id});
     if (!existenteProduc){
-        throw new Error(`El ID: ${id} No existe`);
+        throw new Error(`El ID: ${nombre} No existe`);
     }
 }
 
@@ -53,8 +61,8 @@ export const existenteCategoria = async (categoria = '') => {
 }
 
 export const NoexistenteCategoria = async (categoria = '') => {
-    const existeEmail = await Categoria.findOne({categoria});
-    if (!existeEmail){
+    const existeCategoria = await Categoria.findOne({categoria});
+    if (!existeCategoria){
         throw new Error(`La categoria ${categoria} no existe`);
     }
 }
@@ -65,3 +73,4 @@ export const existeCategoriaById = async (id = '') => {
         throw new Error(`El ID: ${id} No existe`);
     }
 }
+

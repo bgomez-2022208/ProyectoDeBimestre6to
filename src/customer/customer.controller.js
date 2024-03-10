@@ -36,7 +36,8 @@ export const createCustomer = async (req, res) => {
 
 
 export const CustomerPut = async (req, res) => {
-    const customerID = req.params.id;
+    const customerID = req.customer;
+    
     const {nombre,password,preferencias,informacion} = req.body;
     try {
         const customer = await Customer.findById(customerID);
@@ -68,8 +69,8 @@ export const CustomerPut = async (req, res) => {
 
 
 export const deleteCustomer = async (req, res) => {
-    const { id } = req.params;
-    const customer = await Customer.findByIdAndUpdate(id, { estado: false });
+    const customerid = req.customer;
+    const customer = await Customer.findByIdAndUpdate(customerid, { estado: false });
     const authenticatedUser = req.customer;
 
     res.status(200).json({ msg: 'Usuario desactivado', customer, authenticatedUser });

@@ -28,11 +28,9 @@ router.get('/', getCategory);
 
 
 router.get(
-    "/:id",
+    "/nombre",
     [
-        check ("id", "No es un ID valido").isMongoId(),
-        check("id").custom(existeProducById),
-        validarCampos,
+        
     ],
     getProducById
 );
@@ -60,14 +58,9 @@ router.put(
     "/:id",
     [
         validarJWT,
-        check("nombre","El nombre es obligatorio").not().isEmpty(),
-        check("nombre").custom(existenteProduct),
-        check("precio","El precio es obligatorio").not().isEmpty(),
-        check("cantidad","La cantidad es obligatorio").not().isEmpty(),
-        check("vendidos","La vendidos es obligatorio").not().isEmpty(),
-        check("empresa","La empresa es obligatoria").not().isEmpty(),
-        check("descripcion","La descripcion es obligatoria").not().isEmpty(),
-        check("categoria","La categoria es obligatoria").not().isEmpty(),
+        check(`id`,`No es un id valido`).isMongoId(),
+        //check("id").custom(existeProducById),
+       
         validarCampos,
     ],
     ProductPut

@@ -50,6 +50,7 @@ if (!token) {
 try {
   const { uid } = jwt.verify(token, process.env.SECRETORPRIVATEKEY);
   const customer = await Customer.findById(uid);
+  console.log(customer);
   if(!customer){
     return res.status(401).json({
       msg: 'User does not exist in the database'

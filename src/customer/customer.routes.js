@@ -9,7 +9,7 @@ import {
 } from "./customer.controller.js";
 
 import {
-    existenteEmail,
+  existenteEmailCustomer,
     existeCustomerById
 } from "../helpers/db-validators.js";
 
@@ -36,14 +36,14 @@ router.post(
             min: 6,
           }),
         check("correo", "Este no es un correo válido").isEmail(),
-        check("correo").custom(existenteEmail),
+        check("correo").custom(existenteEmailCustomer),
         validarCampos,
     ],
     createCustomer
     );
 
     router.put(
-        "/:id",
+        "/update",
         [
             validarJWTCustomer,
           check("nombre", "name cannot be empty").not().isEmpty(),
@@ -54,13 +54,10 @@ router.post(
       );
 
       router.delete(
-        "/:id",
+        "/",
         [
         validarJWTCustomer,
-          //tieneRole(""),
-          check("id", "No es un ID válido").isMongoId(),
-          check("id").custom(existeCustomerById),
-          validarCampos,
+         
         ],
         deleteCustomer
       );

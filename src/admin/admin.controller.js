@@ -34,7 +34,7 @@ export const createAdmin = async (req, res) => {
 //Update
 
 export const adminPut = async (req, res) => {
-    const adminId = req.params.id;
+    const adminId = req.admin;
     const {nombre,password} = req.body;
     try {
         const admin = await Admin.findById(adminId);
@@ -52,13 +52,12 @@ export const adminPut = async (req, res) => {
       res.status(500).json({ msg: "Internal Server Error" });
     }
   };
-/*
-const { id } = req.params;
-await Admin.findByIdAndUpdate(id, resto);
 
-    const admin = await Admin.findOne({_id: id});
+  
+  export const deleteAdmin = async (req, res) => {
+    const adminId = req.admin;
+    const admin = await Admin.findByIdAndUpdate(adminId, { estado: false });
+    const authenticatedUser = req.admin;
 
-    res.status(200).json({
-        msg: 'Administrador actualizado',
-        admin,
-    });*/ 
+    res.status(200).json({ msg: 'Usuario desactivado', admin, authenticatedUser });
+}

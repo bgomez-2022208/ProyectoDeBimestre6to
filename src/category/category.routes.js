@@ -5,7 +5,7 @@ import {
     getCategoriaById,
     createCategoria,
     categoriaDelete,
-    getCategory
+    CategoriPut
 
     
 } from "./category.controller.js";
@@ -15,7 +15,8 @@ import {
 import {
     existenteCategoria,
     NoexistenteCategoria,
-    existeCategoriaById
+    existeCategoriaById,
+    
     
 } from "../helpers/db-validators.js";
 
@@ -40,7 +41,7 @@ router.get(
 router.post(
     "/",
     [
-        //validarJWT,
+        validarJWT,
         check("categoria","El nombre es obligatorio").not().isEmpty(),
         check("categoria").custom(existenteCategoria),
         validarCampos,
@@ -50,16 +51,17 @@ router.post(
 
 
 
-/*router.put(
+router.put(
     "/:id",
     [
     validarJWT,
     check("categoria","El categoria es obligatorio").not().isEmpty(),
-    check("categoria").custom(existeCategoriaById),
+    check(`id`,`No es un id valido`).isMongoId(),
+    check('id').custom(existeCategoriaById),
     validarCampos,
     ],
     CategoriPut
-    );*/
+    );
 
 
 router.delete('/', [validarJWT], categoriaDelete);

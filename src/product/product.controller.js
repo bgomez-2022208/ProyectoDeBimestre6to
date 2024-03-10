@@ -7,8 +7,13 @@ import Categoria from '../category/category.js';
 
 
 export const getProducById = async (req, res) => {
-    const { id } = req.params;
-    const product = await Product.findOne({ _id: id});
+    const { nombre } = req.query;
+    const product = await Product.findOne({nombre});
+    if(!product){
+        return res.status(400).json({
+            msg: "El producto con este nombre no existe"
+        });
+    }
 
     res.status(200).json({
         product,
@@ -30,29 +35,19 @@ export const createProduct = async (req, res) => {
 
 
 export const ProductPut = async (req, res) => {
-    const aproductId = req.params.id;
-    const {nombre,precio,cantidad,vendidos,empresa,descripcion,categoria} = req.body;
-    try {
-        const product = await Product.findById(aproductId);
+    const { id } = req.params;
+    const {_id, ...resto } = req.body;
+ 
+    await Product.findByIdAndUpdate(id, resto);
 
-        if (!product){
-            return res.status(404).json({ msg: "admin not found"});
-        }
-        product.nombre = nombre;
-        product.precio = precio;
-        product.cantidad = cantidad;
-        product.vendidos = vendidos;
-        product.empresa = empresa;
-        product.descripcion = descripcion;
-        product.categoria = categoria;
+    const productos = await Product.findOne({_id: id});
 
-        await product.save();
-        res.status(200).json({ msg: "Product updated successfully", product });
-    } catch (error) {
-      console.error(error);
-      res.status(500).json({ msg: "Internal Server Error" });
-    }
-  };
+
+    res.status(200).json({
+        msg: 'Usuario Actualizado Exitosamente!!!',
+        productos
+    });
+}
 
   export const Productdelete = async (req, res) => {
     const { id } = req.params;
@@ -79,3 +74,4 @@ export const getCategory = async(req, res = response) =>{
         p
     });
 }
+

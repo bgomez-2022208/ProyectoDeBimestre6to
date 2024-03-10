@@ -34,10 +34,8 @@ export const categoriaDelete = async (req, res) => {
     const { categoria } = req.query;
 
     try {
-        // Encontrar todos los productos con la categoría a eliminar
         const productos = await Producto.updateMany({ categoria }, { categoria: 'Categorías eliminadas' });
 
-        // Eliminar la categoría
         const result = await Categoria.deleteOne({ categoria });
 
         res.status(200).json({
@@ -50,49 +48,28 @@ export const categoriaDelete = async (req, res) => {
     }
 }
 
+export const getCategory = async(req, res) => {
+    const {categoria} = req.body;
+    const productos = await Producto.find({categoria, status: true});
 
-export const getCategory = async (req, res) => {
-    const { limite, desde } = req.query;
-    const query = { estado: true };
+    res.status(200).json({
+        productos
+    })
+}
 
-    try {
-        // Obtener las categorías paginadas
-        const categorias = await Categoria.find(query)
-            .skip(Number(desde))
-            .limit(Number(limite));
+export const CategoriPut = async (req, res = response) =>{
+    const { id } = req.params;
+    const {_id, ...resto} = req.body ;
 
-        // Obtener el total de categorías
-        const total = await Categoria.countDocuments(query);
+   
 
-        // Para cada categoría, obtener los productos asociados
-        const categoriasConProductos = await Promise.all(categorias.map(async (categoria) => {
-            // Buscar el producto asociado a la categoría
-            const producto = await Producto.findOne(categoria.keeper);
+    await Categoria.findByIdAndUpdate(id, resto);
 
-            // Verificar si se encontró el producto
-            if (!producto) {
-                return {
-                    ...categoria.toObject(),
-                    producto: "Producto no encontrado",
-                };
-            }
+    const  categoria = await Categoria.findOne({_id: id});
 
-            // Devolver la categoría con el producto asociado
-            return {
-                ...categoria.toObject(),
-                producto: producto.nombre,
-                // Agrega más campos del producto si lo necesitas
-            };
-        }));
 
-        // Responder con las categorías y sus productos asociados
-        res.status(200).json({
-            total,
-            categorias: categoriasConProductos,
-        });
-        
-    } catch (error) {
-        console.error(error);
-        res.status(500).json({ message: 'Error interno del servidor' });
-    }
+    res.status(200).json({
+        msg: 'Categoria Actualizado Exitosamente!!!',
+        categoria
+    });
 }
