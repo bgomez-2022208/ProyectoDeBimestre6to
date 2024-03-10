@@ -6,7 +6,9 @@ import {
     createProduct,
     ProductPut,
     Productdelete,
-    getCategory
+    getCategory,
+    ListProduct,
+    getAgotados
 } from "./product.controller.js";
 
 
@@ -26,6 +28,7 @@ const router = Router();
 
 router.get('/', getCategory);
 
+router.get('/agotados', getAgotados);
 
 router.get(
     "/nombre",
@@ -34,6 +37,8 @@ router.get(
     ],
     getProducById
 );
+
+router.get("/list",[validarJWT,], ListProduct);
 
 
 router.post(

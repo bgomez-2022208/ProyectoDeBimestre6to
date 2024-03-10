@@ -75,3 +75,39 @@ export const getCategory = async(req, res = response) =>{
     });
 }
 
+ export const ListProduct = async (req, res = response) => {
+    const {limite, desde} = req.query;
+    const query = {estado: true};
+
+    const [total, productos] = await Promise.all([
+        Product.countDocuments(query),
+        Product.find(query)
+        .skip(Number(desde))
+        .limit(Number(limite))
+    ]);
+
+    res.status(200).json({
+        total,
+        productos
+    });
+}
+
+
+export const getAgotados = async (req, res) => {
+    // Busca todos los productos con cantidad igual a 0 y status true
+    const productos = await Product.find({ cantidad: 0, estado: true });
+    console.log(productos.length);
+    // Verifica si se encontraron productos agotados
+    if (productos.length == 0) {
+        return res.status(404).json({
+            msg: "No hay productos agotados"
+        });
+    }
+
+    // Si se encontraron productos agotados, los envía en la respuesta
+    res.status(200).json({
+        msg: "Productos agotados",
+        productos
+    });
+};
+
