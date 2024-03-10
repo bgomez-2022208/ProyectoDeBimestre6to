@@ -1,62 +1,88 @@
 {
     "client": "Thunder Client",
     "collectionName": "Admin",
-    "dateExported": "2024-03-05T23:02:35.501Z",
+    "dateExported": "2024-03-10T19:16:52.235Z",
     "version": "1.1",
     "folders": [],
     "requests": [
         {
-            "_id": "10329fc8-65b2-40b4-9bb4-34fc63f19216",
-            "colId": "d341b6dd-dc39-4ad1-a9b9-d652a8515733",
+            "_id": "84c75ca3-b8fa-4f02-bd80-fa563c7874b1",
+            "colId": "fdc56210-9b5a-4463-a116-22eb1ac6a78d",
             "containerId": "",
             "name": "create",
-            "url": "http://localhost:8080/customer/v1/users",
+            "url": "http://localhost:8080/api/v1/admin",
             "method": "POST",
             "sortNum": 10000,
-            "created": "2024-03-05T18:49:04.906Z",
-            "modified": "2024-03-05T22:23:48.974Z",
+            "created": "2024-03-08T04:23:42.667Z",
+            "modified": "2024-03-10T07:39:44.943Z",
             "headers": [],
             "params": [],
             "body": {
                 "type": "json",
-                "raw": "{\n  \"nombre\":\"loll\",\n  \"password\":\"1234567\",\n  \"correo\":\"brandeti99@gmail.com\"\n}",
+                "raw": "{\n  \"nombre\":\"loll\",\n  \"password\":\"1234567\",\n  \"correo\":\"brandeti1q01310@gmail.com\",\n   \"preferencias\":\"leche\",\n  \"informacion\":\"dslasdlsa\"\n}",
                 "form": []
             },
             "reqType": "post",
             "tests": []
         },
         {
-            "_id": "28c28729-6538-43a9-9066-d14f555d1607",
-            "colId": "d341b6dd-dc39-4ad1-a9b9-d652a8515733",
+            "_id": "f6b55bf2-f550-4e50-aad0-69f490fb0a80",
+            "colId": "fdc56210-9b5a-4463-a116-22eb1ac6a78d",
             "containerId": "",
             "name": "updateAdmin",
-            "url": "http://localhost:8080/api/admin/65e7937bd8a83d37d60bc24f",
+            "url": "http://localhost:8080/api/v1/admin/update",
             "method": "PUT",
             "sortNum": 20000,
-            "created": "2024-03-05T19:48:47.452Z",
-            "modified": "2024-03-05T21:54:19.940Z",
-            "headers": [],
+            "created": "2024-03-08T04:23:42.668Z",
+            "modified": "2024-03-10T06:18:52.671Z",
+            "headers": [
+                {
+                    "name": "x-token",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NWVhOTQ2OTgwMWQyYThhNTY1MmYzNDgiLCJpYXQiOjE3MTAwNDk3NjQsImV4cCI6MTcxMDA1MzM2NH0.uRPuEhqvYgVVwyj9a9OYnRzHJv3XanCgYS_CQHppDxY"
+                }
+            ],
             "params": [],
             "body": {
                 "type": "json",
-                "raw": "{\n  \"nombre\":\"sss\",\n  \"password\":\"1234567\"\n}",
+                "raw": "{\n  \"nombre\":\"ssss\",\n  \"password\":\"1234567\",\n  \"correo\":\"brandeti1030@gmail.com\"\n}",
                 "form": []
             },
             "reqType": "put",
             "tests": []
         },
         {
-            "_id": "b733c314-5dd8-4112-a192-f0fcce2b09e0",
-            "colId": "d341b6dd-dc39-4ad1-a9b9-d652a8515733",
+            "_id": "7b6803ad-7986-41af-9dd9-876237009e2c",
+            "colId": "fdc56210-9b5a-4463-a116-22eb1ac6a78d",
             "containerId": "",
             "name": "readAdmin",
-            "url": "http://localhost:8080/api/admin/65e776c77c1eb3fbdf72ffda",
+            "url": "http://localhost:8080/api/v1/admin/65ea94b9801d2a8a5652f34e",
             "method": "GET",
             "sortNum": 30000,
-            "created": "2024-03-05T19:49:09.032Z",
-            "modified": "2024-03-05T19:49:48.388Z",
+            "created": "2024-03-08T04:23:42.670Z",
+            "modified": "2024-03-10T05:48:12.238Z",
             "headers": [],
             "params": [],
+            "reqType": "get",
+            "tests": []
+        },
+        {
+            "_id": "6f9c0384-81e6-4412-8769-240ce853223a",
+            "colId": "fdc56210-9b5a-4463-a116-22eb1ac6a78d",
+            "containerId": "",
+            "name": "deleteAdmin",
+            "url": "http://localhost:8080/api/v1/admin",
+            "method": "DELETE",
+            "sortNum": 40000,
+            "created": "2024-03-10T06:44:42.516Z",
+            "modified": "2024-03-10T07:19:10.572Z",
+            "headers": [
+                {
+                    "name": "x-token",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NWVkNWVkNGUwNGIzOWUwNjE5ZjVmNDgiLCJpYXQiOjE3MTAwNTUxNDEsImV4cCI6MTcxMDA1ODc0MX0.bRX2Q3f8biIXdDf9zS67PPDiTUS37dzcntgZAQIrhlM"
+                }
+            ],
+            "params": [],
+            "reqType": "del",
             "tests": []
         }
     ]

@@ -10,6 +10,8 @@ import customerRoutes from '../src/customer/customer.routes.js';
 import authRoutes from '../src/auth/auth.routes.js';
 import productRoutes from '../src/product/product.routes.js';
 import categoriaRoutes from '../src/category/category.routes.js';
+import TroRoutes from '../src/trolley/trolley.routes.js';
+import facturaRoutes from '../src/factura/factura.routes.js';
 
 class Server {
     constructor() {
@@ -20,6 +22,8 @@ class Server {
         this.authPath = '/api/v1/auth';
         this.productPath = '/api/v1/product';
         this.categoriaPath = '/api/v1/categoria';
+        this.trolleyPath = '/api/v1/trolley';
+        this.facturaPath = '/api/v1/factura';
 
         this.middlewares(); 
         this.conectarDB(); 
@@ -44,7 +48,8 @@ class Server {
         this.app.use(this.authPath,authRoutes);
         this.app.use(this.productPath, productRoutes);
         this.app.use(this.categoriaPath, categoriaRoutes);
-        
+        this.app.use(this.trolleyPath, TroRoutes);
+        this.app.use(this.facturaPath, facturaRoutes);
     }
 
     listen() {

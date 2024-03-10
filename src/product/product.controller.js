@@ -71,8 +71,8 @@ export const getCategory = async(req, res = response) =>{
     }
 
     res.status(200).json({
-        p
-    });
+       p
+    });
 }
 
  export const ListProduct = async (req, res = response) => {
@@ -94,17 +94,13 @@ export const getCategory = async(req, res = response) =>{
 
 
 export const getAgotados = async (req, res) => {
-    // Busca todos los productos con cantidad igual a 0 y status true
     const productos = await Product.find({ cantidad: 0, estado: true });
-    console.log(productos.length);
-    // Verifica si se encontraron productos agotados
     if (productos.length == 0) {
         return res.status(404).json({
             msg: "No hay productos agotados"
         });
     }
 
-    // Si se encontraron productos agotados, los envía en la respuesta
     res.status(200).json({
         msg: "Productos agotados",
         productos

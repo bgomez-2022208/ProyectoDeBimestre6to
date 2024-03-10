@@ -1,0 +1,231 @@
+{
+    "client": "Thunder Client",
+    "collectionName": "ProductoAndCategoria",
+    "dateExported": "2024-03-10T19:17:14.779Z",
+    "version": "1.1",
+    "folders": [],
+    "requests": [
+        {
+            "_id": "61cc24df-c11a-4333-87dd-ee7543042f59",
+            "colId": "4bccc54e-d1c7-4c2a-81d8-d0eb57db33f9",
+            "containerId": "",
+            "name": "createProduc",
+            "url": "http://localhost:8080/api/v1/product",
+            "method": "POST",
+            "sortNum": 10000,
+            "created": "2024-03-08T05:27:17.821Z",
+            "modified": "2024-03-10T18:46:14.515Z",
+            "headers": [
+                {
+                    "name": "x-token",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NWVkNjNjMDdkZGI4YzRhZWQzYjk0MmUiLCJpYXQiOjE3MTAwOTYzNjUsImV4cCI6MTcxMDA5OTk2NX0.1ThW5pwIW54_b_KoCUY6Sc5nkB0sqV2pIZRNcJxPGZg"
+                }
+            ],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"nombre\":\"Coliflor\",\n  \"precio\": \"1.57\",\n  \"cantidad\":0,\n  \"vendidos\":3,\n  \"empresa\":\"Lan\",\n  \"descripcion\":\"dsafasdfasdasda\",\n  \"categoria\":\"dasfas\"\n}",
+                "form": []
+            },
+            "reqType": "post",
+            "tests": []
+        },
+        {
+            "_id": "3b950834-9d53-46c3-9781-d584705b482b",
+            "colId": "4bccc54e-d1c7-4c2a-81d8-d0eb57db33f9",
+            "containerId": "",
+            "name": "update Product",
+            "url": "http://localhost:8080/api/v1/product/65edfff76c4a4834cecdfb97",
+            "method": "PUT",
+            "sortNum": 20000,
+            "created": "2024-03-08T05:57:45.894Z",
+            "modified": "2024-03-10T18:47:04.668Z",
+            "headers": [
+                {
+                    "name": "x-token",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NWVkNjNjMDdkZGI4YzRhZWQzYjk0MmUiLCJpYXQiOjE3MTAwOTYzNjUsImV4cCI6MTcxMDA5OTk2NX0.1ThW5pwIW54_b_KoCUY6Sc5nkB0sqV2pIZRNcJxPGZg"
+                }
+            ],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"nombre\":\"findById\",\n  \"precio\": 14,\n  \"cantidad\":0,\n  \"vendidos\":32,\n  \"empresa\":\"Casta\",\n  \"descripcion\":\"papeles de cuadriculas\",\n  \"categoria\":\"dasfas\"\n}",
+                "form": []
+            },
+            "reqType": "put",
+            "tests": []
+        },
+        {
+            "_id": "be179bfd-f733-4c99-bda7-405ab4645b54",
+            "colId": "4bccc54e-d1c7-4c2a-81d8-d0eb57db33f9",
+            "containerId": "",
+            "name": "listCatalogoProductos",
+            "url": "http://localhost:8080/api/v1/product/list",
+            "method": "GET",
+            "sortNum": 25000,
+            "created": "2024-03-10T16:10:26.483Z",
+            "modified": "2024-03-10T16:17:26.374Z",
+            "headers": [
+                {
+                    "name": "x-token",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NWVkNjNjMDdkZGI4YzRhZWQzYjk0MmUiLCJpYXQiOjE3MTAwODc0MzMsImV4cCI6MTcxMDA5MTAzM30.RiN5VaglXR7E7DZb9dzXpYyADhLwx_8RmeEmbBC7eHw"
+                }
+            ],
+            "params": [],
+            "reqType": "get",
+            "tests": []
+        },
+        {
+            "_id": "f1c873da-13a6-46b2-9681-9274bf129808",
+            "colId": "4bccc54e-d1c7-4c2a-81d8-d0eb57db33f9",
+            "containerId": "",
+            "name": "readProducto",
+            "url": "http://localhost:8080/api/v1/product/nombre?nombre=limonada",
+            "method": "GET",
+            "sortNum": 27500,
+            "created": "2024-03-10T06:24:42.207Z",
+            "modified": "2024-03-10T06:33:02.395Z",
+            "headers": [],
+            "params": [
+                {
+                    "name": "nombre",
+                    "value": "limonada",
+                    "isPath": false
+                }
+            ],
+            "reqType": "get",
+            "tests": []
+        },
+        {
+            "_id": "4d47abb6-85f8-42bf-bc0a-9269a6340037",
+            "colId": "4bccc54e-d1c7-4c2a-81d8-d0eb57db33f9",
+            "containerId": "",
+            "name": "delete Product",
+            "url": "http://localhost:8080/api/v1/product/65eab06985cbd3fddc843d9d",
+            "method": "DELETE",
+            "sortNum": 30000,
+            "created": "2024-03-08T06:02:45.452Z",
+            "modified": "2024-03-08T06:32:46.236Z",
+            "headers": [
+                {
+                    "name": "x-token",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NWVhOTQ2OTgwMWQyYThhNTY1MmYzNDgiLCJpYXQiOjE3MDk4Nzk0NjMsImV4cCI6MTcwOTg4MzA2M30.3-q61m1Z2driMnqtAO7Vw_nhfLyf8BUwiaXdOKRSdm4"
+                }
+            ],
+            "params": [],
+            "reqType": "get",
+            "tests": []
+        },
+        {
+            "_id": "cdc87454-1062-4678-965e-31304ce202d6",
+            "colId": "4bccc54e-d1c7-4c2a-81d8-d0eb57db33f9",
+            "containerId": "",
+            "name": "create Categoria",
+            "url": "http://localhost:8080/api/v1/categoria",
+            "method": "POST",
+            "sortNum": 40000,
+            "created": "2024-03-08T07:34:20.780Z",
+            "modified": "2024-03-10T08:25:47.126Z",
+            "headers": [
+                {
+                    "name": "x-token",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NWVkNjNjMDdkZGI4YzRhZWQzYjk0MmUiLCJpYXQiOjE3MTAwNTkxMDcsImV4cCI6MTcxMDA2MjcwN30.-mYnNDvgECFfI8P3kHJi3-wGkoOnniSLHMhgnR1cT-c"
+                }
+            ],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"categoria\":\"lop\"\n}",
+                "form": []
+            },
+            "reqType": "post",
+            "tests": []
+        },
+        {
+            "_id": "1e211d8b-af30-4003-b495-14cc3719f280",
+            "colId": "4bccc54e-d1c7-4c2a-81d8-d0eb57db33f9",
+            "containerId": "",
+            "name": "delete categori",
+            "url": "http://localhost:8080/api/v1/categoria?categoria=lolas",
+            "method": "DELETE",
+            "sortNum": 50000,
+            "created": "2024-03-08T08:13:57.387Z",
+            "modified": "2024-03-09T04:11:22.768Z",
+            "headers": [
+                {
+                    "name": "x-token",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NWVhOTQ2OTgwMWQyYThhNTY1MmYzNDgiLCJpYXQiOjE3MDk5NTQ2MjgsImV4cCI6MTcwOTk1ODIyOH0.JEYz_mSgjSRL25-RNwg2HHWcRRa5FSy3xJwLUYJgZGY"
+                }
+            ],
+            "params": [
+                {
+                    "name": "categoria",
+                    "value": "lolas",
+                    "isPath": false
+                }
+            ],
+            "reqType": "del",
+            "tests": []
+        },
+        {
+            "_id": "9a0ee515-9fa9-40df-9277-1d8d1fed8c1a",
+            "colId": "4bccc54e-d1c7-4c2a-81d8-d0eb57db33f9",
+            "containerId": "",
+            "name": "updateCategoria",
+            "url": "http://localhost:8080/api/v1/categoria/65ed6e8b92e3bbe6e680c271",
+            "method": "PUT",
+            "sortNum": 55000,
+            "created": "2024-03-10T07:58:24.431Z",
+            "modified": "2024-03-10T08:26:40.234Z",
+            "headers": [
+                {
+                    "name": "x-token",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NWVkNjNjMDdkZGI4YzRhZWQzYjk0MmUiLCJpYXQiOjE3MTAwNTc2MzMsImV4cCI6MTcxMDA2MTIzM30.O2KnKIjsZl17FS8r5AckuX1b14yuZQrz0gVg219UgcQ"
+                }
+            ],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"categoria\":\"dasfas\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "6edf0699-4717-4e63-9402-f900200a750f",
+            "colId": "4bccc54e-d1c7-4c2a-81d8-d0eb57db33f9",
+            "containerId": "",
+            "name": "listProducXCategoria",
+            "url": "http://localhost:8080/api/v1/product?categoria=aass",
+            "method": "GET",
+            "sortNum": 60000,
+            "created": "2024-03-08T09:01:26.343Z",
+            "modified": "2024-03-10T06:48:56.970Z",
+            "headers": [],
+            "params": [
+                {
+                    "name": "categoria",
+                    "value": "aass",
+                    "isPath": false
+                }
+            ],
+            "reqType": "get",
+            "tests": []
+        },
+        {
+            "_id": "63564d0c-326f-48f1-bc51-c969597ca84c",
+            "colId": "4bccc54e-d1c7-4c2a-81d8-d0eb57db33f9",
+            "containerId": "",
+            "name": "productosAgotados",
+            "url": "http://localhost:8080/api/v1/product/agotados",
+            "method": "GET",
+            "sortNum": 110000,
+            "created": "2024-03-10T16:22:01.025Z",
+            "modified": "2024-03-10T16:39:36.824Z",
+            "headers": [],
+            "params": [],
+            "reqType": "get",
+            "tests": []
+        }
+    ]
+}
