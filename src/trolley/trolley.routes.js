@@ -2,7 +2,8 @@ import { Router } from "express";
 import { check } from "express-validator";
 
 import {
-    comprasPut
+    comprasPut,
+    PDFDeFactura
 } from "./trolley.controller.js";
 
 import { validarCampos } from "../middlewares/validar-campos.js";
@@ -21,6 +22,6 @@ router.put(
     ],comprasPut
 )
 
-//router.get('/registro/pdf', generarPDF);
+router.get('/creacion/pdFactura',  PDFDeFactura);
 
 export default router;

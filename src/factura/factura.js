@@ -1,15 +1,7 @@
 import mongoose from "mongoose";
 
 const trolleySchema = mongoose.Schema({
-    productos:{
-        type: [String],
-    },
-    precio:{
-        type:[Number],
-    },
-    cantidad:{
-        type:[Number],
-    },
+    
     metodoPago:{
         type:String,
         required:['Metodo de pago']
@@ -29,11 +21,20 @@ const trolleySchema = mongoose.Schema({
         type:String,
         required:['email del comprador']
     },
+  detalle: {
+    type: [{
+      precio: { type: Number, required: true },
+      cantidad: { type: Number, required: true },
+      producto: { type: String, required: true },
+    }],
+    _id: false,
+    }
 });
 
 trolleySchema.methods.toJSON = function(){
     const{ __v, _id, ...trolley} = this.toObject();
     trolley.uid = _id;
+    trolley.detalle._id=null;
     return trolley;
 };
 
