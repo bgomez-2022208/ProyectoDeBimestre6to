@@ -7,7 +7,7 @@ import {
 } from "./trolley.controller.js";
 
 import { validarCampos } from "../middlewares/validar-campos.js";
-import { validarJWT } from "../middlewares/validar-jwt.js";
+import { validarJWT,validarJWTCustomer } from "../middlewares/validar-jwt.js";
 
 const router = Router();
 
@@ -18,7 +18,7 @@ router.put(
         check('nombre','el producto que va a comprar').not().isEmpty(),
         check('cantidad','la cantidad de unidades que desa del producto').not().isEmpty(),
         validarCampos,
-        validarJWT,
+        validarJWTCustomer,
     ],comprasPut
 )
 

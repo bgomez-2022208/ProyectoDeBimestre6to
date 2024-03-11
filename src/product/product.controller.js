@@ -44,7 +44,7 @@ export const ProductPut = async (req, res) => {
 
 
     res.status(200).json({
-        msg: 'Usuario Actualizado Exitosamente!!!',
+        msg: 'Producto Actualizado Exitosamente!!!',
         productos
     });
 }

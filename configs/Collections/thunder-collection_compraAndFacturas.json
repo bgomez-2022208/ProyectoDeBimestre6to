@@ -1,0 +1,122 @@
+{
+    "client": "Thunder Client",
+    "collectionName": "compraAndFacturas",
+    "dateExported": "2024-03-11T02:30:08.575Z",
+    "version": "1.1",
+    "folders": [],
+    "requests": [
+        {
+            "_id": "23e2fe30-b2a9-4ef3-898c-a11e5aa181e5",
+            "colId": "2ede4306-3ef8-4fde-bebd-7283184292a0",
+            "containerId": "",
+            "name": "DatosDeCompra",
+            "url": "http://localhost:8080/api/v1/factura",
+            "method": "POST",
+            "sortNum": 10000,
+            "created": "2024-03-10T22:07:56.457Z",
+            "modified": "2024-03-11T02:26:46.482Z",
+            "headers": [
+                {
+                    "name": "x-token",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NWVlM2MzNzE1Y2UzNDAyZDBkZTM2NzQiLCJpYXQiOjE3MTAxMjM5NDgsImV4cCI6MTcxMDEyNzU0OH0.1dgpavWc820RS3nvqFbRxUYpmAaGO_Fq5FjaTPIr7uk"
+                }
+            ],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"fecha\":\"2024-06-12\",\n  \"correo\":\"gersonEmanuelitoo@gmail.com\",\n  \"metodoPago\":\"Tarjeta\"\n}",
+                "form": []
+            },
+            "reqType": "post",
+            "tests": []
+        },
+        {
+            "_id": "3e2e0164-534f-4d5f-a2fd-4055c91f2afc",
+            "colId": "2ede4306-3ef8-4fde-bebd-7283184292a0",
+            "containerId": "",
+            "name": "listComprasCustomer",
+            "url": "http://localhost:8080/api/v1/factura?correo=gersonEmanuelito1@gmail.com",
+            "method": "GET",
+            "sortNum": 30000,
+            "created": "2024-03-10T23:12:57.785Z",
+            "modified": "2024-03-11T02:20:18.711Z",
+            "headers": [
+                {
+                    "name": "x-token",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NWVlNmEwNWM0YzQwZjBiOWEwNmUyMWQiLCJpYXQiOjE3MTAxMjM1MzksImV4cCI6MTcxMDEyNzEzOX0.JPFMj6L_ZIgDoR3KZ0LoekW08vi2u_vVlUuYP2i5sSg"
+                }
+            ],
+            "params": [
+                {
+                    "name": "correo",
+                    "value": "gersonEmanuelito1@gmail.com",
+                    "isPath": false
+                }
+            ],
+            "reqType": "get",
+            "tests": []
+        },
+        {
+            "_id": "588410c1-6a16-4683-85ef-0cada7fa392d",
+            "colId": "2ede4306-3ef8-4fde-bebd-7283184292a0",
+            "containerId": "",
+            "name": "compras",
+            "url": "http://localhost:8080/api/v1/trolley/Compra?correo=gersonEmanuelitoo@gmail.com",
+            "method": "PUT",
+            "sortNum": 40000,
+            "created": "2024-03-10T23:41:05.737Z",
+            "modified": "2024-03-11T02:26:00.006Z",
+            "headers": [
+                {
+                    "name": "x-token",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NWVlM2MzNzE1Y2UzNDAyZDBkZTM2NzQiLCJpYXQiOjE3MTAxMjM5NDgsImV4cCI6MTcxMDEyNzU0OH0.1dgpavWc820RS3nvqFbRxUYpmAaGO_Fq5FjaTPIr7uk"
+                }
+            ],
+            "params": [
+                {
+                    "name": "correo",
+                    "value": "gersonEmanuelitoo@gmail.com",
+                    "isPath": false
+                }
+            ],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"nombre\":\"Muslo\",\n  \"cantidad\":\"1\"\n}",
+                "form": []
+            },
+            "reqType": "put",
+            "tests": []
+        },
+        {
+            "_id": "434c315d-61c2-42ba-928b-024b3adf1e1b",
+            "colId": "2ede4306-3ef8-4fde-bebd-7283184292a0",
+            "containerId": "",
+            "name": "PDFFactura",
+            "url": "http://localhost:8080/api/v1/trolley/creacion/pdFactura?correo",
+            "method": "GET",
+            "sortNum": 50000,
+            "created": "2024-03-11T00:19:08.135Z",
+            "modified": "2024-03-11T02:28:01.169Z",
+            "headers": [
+                {
+                    "name": "x-token",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NWVlM2MzNzE1Y2UzNDAyZDBkZTM2NzQiLCJpYXQiOjE3MTAxMjM5NDgsImV4cCI6MTcxMDEyNzU0OH0.1dgpavWc820RS3nvqFbRxUYpmAaGO_Fq5FjaTPIr7uk"
+                }
+            ],
+            "params": [
+                {
+                    "name": "correo",
+                    "value": "",
+                    "isPath": false
+                }
+            ],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"correo\":\"gersonEmanuelitoo@gmail.com\"\n}",
+                "form": []
+            },
+            "reqType": "get",
+            "tests": []
+        }
+    ]
+}
